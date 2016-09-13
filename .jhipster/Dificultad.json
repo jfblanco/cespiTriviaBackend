@@ -1,0 +1,58 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "codigo",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Codigo",
+            "fieldNameUnderscored": "codigo",
+            "fieldInJavaBeanMethod": "Codigo",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "1",
+            "fieldValidateRulesMaxlength": "4"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "estado",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "Estado",
+            "fieldNameUnderscored": "estado",
+            "fieldInJavaBeanMethod": "Estado",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "descripcion",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Descripcion",
+            "fieldNameUnderscored": "descripcion",
+            "fieldInJavaBeanMethod": "Descripcion",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "1",
+            "fieldValidateRulesMaxlength": "30"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20160730011721",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "validation": true
+}

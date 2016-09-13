@@ -1,0 +1,406 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 29, 2016, 11:39:00 PM
+    Author     : Francisco Blanco <blanco.jose.francisco@gmail.com>
+*/
+
+
+html {
+	height: 100%;	
+}
+
+body {
+	background: #EEE;
+	color: #666;
+	font: normal 13px Helvetica, Arial, sans-serif;
+	height: 100%;
+}
+
+ul, li {
+	list-style: none;
+	list-style-position: inside;
+	margin: 0;
+	padding: 0;
+}	
+
+a, a:hover, a:link {
+	color: #666;
+	text-decoration: none;	
+}
+
+header {
+	background: white;
+	border-bottom: #CCC solid 1px;
+	overflow: hidden;
+	position: absolute;
+	width: 100%;
+	z-index: 100;
+}
+
+	#logo {
+		height: 55px;
+		margin: 15px 0;
+		text-align:  center;
+		width: 10%;
+	}	
+	
+	#logo a {
+		display: inline-block;
+		height: 55px;
+		opacity: 0.6;
+		width: 55px;
+		
+		-webkit-transition: opacity 0.2s ease;	
+		-moz-transition: opacity 0.2s ease;	
+		transition: opacity 0.2s ease;	
+	}
+	
+	#logo a:hover {
+		opacity: 1;
+	}	
+
+	header nav {
+		margin: 15px;
+	}
+	
+	header nav ul {
+		overflow: hidden;
+	}
+	
+		header nav li {
+			float: left;
+		}
+		
+			header nav li a {
+				border-radius: 5px;
+				display: block;
+				font: normal 12px HelveticaNeueLTMd, Arial, sans-serif;
+				padding: 20px;
+			}
+			
+			header nav li a:hover {
+				text-decoration: underline;
+			}
+			
+.container {
+	background: #EEE;
+	height: 100%;
+	padding: 0 0 0 0;
+	position: absolute;
+	width: 100%;	
+}
+	
+.container aside {
+	background: #333;	
+	height: 100%;
+	width: 10%;
+}	
+
+	.container aside a,
+	.container aside a:link {
+		color: #666;
+		display: block;
+		font: normal 12px HelveticaNeueLTBd, Arial, Helvetica, sans-serif;
+		padding: 20px;
+		text-align: center;
+
+		-webkit-transition: background-color 0.1s ease, color 0.2s ease;
+		-moz-transition:background-color 0.1s ease, color 0.2s ease;
+		transition: background-color 0.1s ease, color 0.2s ease;
+	}
+		
+	.container aside a:hover {
+		background: black;
+		color: white;	
+	}
+	
+		.container aside a .glyphicon {
+			font-size: 30px;
+			margin-bottom: 20px;
+			width: 100%;
+		}
+	
+#content {
+	height: 100%;
+	overflow-y: scroll;
+	padding: 15px;
+	position: relative;
+	width: 100%;	
+}
+
+h1 {
+	font: normal 18px HelveticaNeueLTBd, Arial, sans-serif;
+	margin: 15px 0;
+	padding: 0;
+}
+
+	h1 a {
+		background: white;
+		display: block;
+		margin: 0 0 0 20px;
+		padding: 5px 12px 7px 12px;
+		position: relative;
+		text-align: center;
+		top: -14px;
+
+		-webkit-transition: background-color 0.2s ease, color 0.2s ease;
+		-moz-transition: background-color 0.2s ease, color 0.2s ease;
+		transition: background-color 0.2s ease, color 0.2s ease;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		-webkit-box-shadow: 0 1px 0 #CCC;
+		-moz-box-shadow: 0 1px 0 #CCC;
+		box-shadow: 0 1px 0 #CCC;
+	}
+	
+	h1 a:hover {
+		background: #666;
+		color: white;	
+	}
+	
+		h1 a .glyphicon {
+			font-size: 13px;
+		}
+	
+h2 {
+	font: normal 16px HelveticaNeueLTMd, Arial, sans-serif;
+	margin: 30px 0 15px;
+	padding: 0;
+}
+
+table {
+	background: white;
+	margin-bottom: 15px;
+	width: 100%;	
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 0 #CCC;
+	-moz-box-shadow: 0 1px 0 #CCC;
+	box-shadow: 0 1px 0 #CCC;
+}
+	
+	table th {
+		border-bottom: #DDD solid 2px;
+		font: normal 13px HelveticaNeueLTBd, Arial, sans-serif;
+		padding: 15px;
+		text-align: center;
+		text-transform: uppercase;
+		vertical-align: middle;
+	}
+	
+	table td {
+		border-bottom: #DDD solid 1px;
+		padding: 15px;	
+		text-align: center;
+		vertical-align: middle;
+	}
+
+	table .border-cell {
+		border-left: #DDD solid 1px;
+	}
+
+		table a {
+			cursor: pointer;	
+			display: inline-block;
+			opacity: 0.6;
+
+			-webkit-transition: opacity 0.2s ease;	
+			-moz-transition: opacity 0.2s ease;	
+			transition: opacity 0.2s ease;	
+		}
+	
+		table a:hover {
+			opacity: 1;
+		}
+
+.modal-confirmation .modal-content {
+	padding: 15px;
+	text-align: center;
+}
+
+	.modal-confirmation .modal-content p {
+		margin-bottom: 15px;
+	}
+
+		.delete-yes, 
+		.delete-no {
+			background: #999;
+			border: none;
+			color: white;
+			cursor: pointer;
+			font: normal 11px HelveticaNeueLTBd, Arial, sans-serif;
+			padding: 15px;
+
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			-webkit-transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease;	
+			-moz-transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease;	
+			transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease;	
+		}
+
+		.delete-yes:hover, 
+		.delete-no:hover {
+			background: #666;
+			color: white;
+		}
+
+form {
+	background: white;
+	clear: both;
+	overflow: hidden;
+	padding: 15px;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 0 #CCC;
+	-moz-box-shadow: 0 1px 0 #CCC;
+	box-shadow: 0 1px 0 #CCC;
+}
+
+.frm-login {
+	margin-left: 25%;
+	width: 40%;
+}
+
+.opcionCorrecta {
+	color: green;
+        font-weight: bold;
+}
+
+.opcionComun {
+    
+}
+
+.loading {
+	height: 32px;
+	left: 50%;
+	margin-left: -16px;
+	margin-top: -16px;
+	position: absolute;
+	top: 50%;
+	width: 32px;
+}
+
+	form fieldset {
+		border: none;
+		margin: 0 auto;
+		padding: 0;
+		width: 80%;
+	}
+
+		form div:not(.col-md-6) {
+			clear: both;
+			margin-bottom: 15px;
+			overflow: hidden;
+			position: relative;
+		}
+
+			form label {
+				/*float: left;*/
+				font: normal 13px HelveticaNeueLTBd, Arial, sans-serif;
+				margin: 15.5px 0;
+			}	
+
+				form label small {
+					font-size: 10px;
+					font-weight: lighter;
+				}
+
+			form input,
+			form textarea,
+			form select {
+				border: #CCC solid 1px;				
+				color: #666;
+				float: right;
+				font: normal 13px Helvetica, Arial, sans-serif;
+				padding: 15px;	
+				width: 60%;
+
+				-webkit-transition: border 0.2s ease;	
+				-moz-transition: border 0.2s ease;	
+				transition: border 0.2s ease;	
+			}
+			
+			form input:focus,
+			form textarea:focus,
+			form select:focus {
+				border: #999 solid 1px;
+			}
+			
+			form textarea {
+				height: 100px;
+				resize: none;
+			}
+
+			form input[type=submit] {
+				background: #999;
+				border: none;
+				color: white;
+				cursor: pointer;
+				font: normal 11px HelveticaNeueLTBd, Arial, sans-serif;
+				padding: 15px;
+
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 5px;
+				-webkit-transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease;	
+				-moz-transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease;	
+				transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease;	
+			}
+			
+			form input[type=submit]:hover {
+				background: #666;
+				color: white;
+			}
+
+.gallery {
+	overflow: hidden;
+	display: flex; /* or inline-flex */
+	flex-wrap: wrap;
+}
+
+	.gallery article {
+		background: white;
+		float: left;
+		margin: 0 0 15px 0;
+		padding: 15px;
+		width: 20%;
+
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		-webkit-box-shadow: 0 1px 0 #CCC;
+		-moz-box-shadow: 0 1px 0 #CCC;
+		box-shadow: 0 1px 0 #CCC;
+	}
+
+		.gallery article img {
+			width: 100%;
+		}
+		
+		.gallery article a {
+			color: #666;
+			display: block;
+			float: right;
+			font: normal 12px HelveticaNeueLTMd, Arial, sans-serif;
+			margin-top: 15px;
+		}
+	
+		.gallery article a:hover {
+			color: #666;
+			text-decoration: underline;
+		}
+
+		.gallery article.img-full {
+			display: block;
+			width: 100%;
+		}

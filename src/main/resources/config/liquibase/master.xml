@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160716205304_added_entity_Categoria.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160716205349_added_entity_Nivel.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160716205823_added_entity_Pregunta.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160716205922_added_entity_Partida.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160716210224_added_entity_BitacoraPartida.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160730011721_added_entity_Dificultad.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160808221100_added_entity_Imagen.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160808221500_modified_entity_Pregunta.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160905205100_modified_entity_Pregunta.xml" relativeToChangelogFile="false"/>
+    <!-- JHipster will add liquibase changelogs here -->
+</databaseChangeLog>

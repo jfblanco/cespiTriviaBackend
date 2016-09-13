@@ -1,0 +1,30 @@
+
+<div>
+    <h2><span translate="facultadhumanidadesApp.partida.detail.title">Partida</span> {{partida.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="facultadhumanidadesApp.partida.fecha">Fecha</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{partida.fecha}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="partida"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

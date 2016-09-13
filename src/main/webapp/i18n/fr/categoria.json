@@ -1,0 +1,19 @@
+{
+    "facultadhumanidadesApp": {
+        "categoria" : {
+            "home": {
+                "title": "Categorias",
+                "createLabel": "Créer un nouveau Categoria",
+                "createOrEditLabel": "Créer ou éditer un Categoria"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Categoria {{ id }} ?"
+            },
+            "detail": {
+                "title": "Categoria"
+            },
+            "descripcion": "Descripcion"
+        }
+    }
+}
+

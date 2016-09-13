@@ -1,0 +1,20 @@
+{
+    "login": {
+        "title": "Authentication",
+        "form": {
+            "username": "Usuario",
+            "password": "Contraseña",
+            "password.placeholder": "Your password",
+            "rememberme": "Automatic Login",
+            "button": "Ingresar"
+        },
+        "messages": {
+            "error": {
+                "authentication": "<strong>Error en el login</strong> Intente nuevamente."
+            }
+        },
+        "password" : {
+            "forgot": "Did you forget your password?"
+        }
+    }
+}

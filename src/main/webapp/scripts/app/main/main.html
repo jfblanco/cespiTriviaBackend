@@ -1,0 +1,508 @@
+<div ng-cloak ng-controller="MainController">
+    <div class="row" id="content">
+        <div ng-switch on="isAuthenticated()">
+            <div ng-switch-when="true">      
+                <div class="table-responsive" ng-controller="NivelController">
+                    
+                    <h1>Niveles <a href="http://www.fudit.org/ft-admin/index.php?c=slider&amp;a=add" data-toggle="modal" data-target="#saveNivelModal" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a></h1>
+                    <div class="modal fade" id="saveNivelModal" tabindex="-1" role="dialog" aria-labelledby="myNivelLabel" aria-hidden="true">
+                       <div class="modal-dialog">
+                           <div class="modal-content">
+                               <form name="editForm" role="form" novalidate ng-submit="save()">
+                                   <div class="modal-header">
+                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="clear()">&times;</button>
+                                       <h4 class="modal-title" id="myNivelLabel">Agregar un nuevo Nivel</h4>
+                                   </div>
+                                   <div class="modal-body">
+                                       <div class="form-group">
+                                           <label for="codigo">Codigo</label> <input type="number" class="form-control" id="codigo" name="codigo" ng-model="nivel.codigo">
+                                        </div>
+                                       <div class="form-group">
+                                           <label for="descripcion">Descripcion</label><input type="text" class="form-control" id="descripcion" name="descripcion" ng-model="nivel.descripcion">
+                                       </div>
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                                           <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                                       </button>
+                                       <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                                           <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                                       </button>
+                                   </div>
+                               </form>
+                           </div>
+                       </div>
+                   </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="col-md-2">Codigo</th>
+                                <th class="col-md-6">Descripcion</th>
+                                <th class="col-md-2">Habilitado</th>
+                                <th class="border-cell col-md-1">Modificar</th>
+                                <th class="col-md-1">Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="nivel in nivels">
+                                <td>{{nivel.codigo}}</td>
+                                <td>{{nivel.descripcion}}</td>
+                                <td ng-switch on="nivel.estado">
+                                    <span class="glyphicon glyphicon-remove" ng-switch-when="false"></span><span></span>
+                                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span><span></span>
+                                </td>                          
+                                <td class="border-cell"><a type="submit" ng-click="showUpdate(nivel.id)" data-toggle="modal" data-target="#saveNivelModal"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span></span></a></td>
+                                <td><a type="submit" ng-click="delete(nivel.id)"><span class="glyphicon glyphicon-trash"></span>&nbsp;<span></span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="modal fade" id="deleteNivelConfirmation">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form name="deleteForm" ng-submit="confirmDelete(nivel.id)">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="clear()">&times;</button>
+                                        <div ng-switch on="nivel.estado">
+                                            <h4 class="modal-title" ng-switch-when="true">Seguro que desea Deshabilitar:</h4>
+                                            <h4 class="modal-title" ng-switch-when="false">Seguro que desea Habilitar:</h4>
+                                        </div>    
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{nivel.descripcion}}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                                        </button>
+                                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-success" ng-if="nivel.estado == false">
+                                            <span class="glyphicon glyphicon-check" ></span>&nbsp;<span>Habilitar</span>
+                                        </button>
+                                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger" ng-if="nivel.estado == true">
+                                            <span class="glyphicon glyphicon-remove-circle" ></span>&nbsp;<span>Deshabilitar</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+                
+                
+                
+                <div class="table-responsive" ng-controller="CategoriaController">                    
+                    <h1>Categorias <a href="http://www.fudit.org/ft-admin/index.php?c=slider&amp;a=add" data-toggle="modal" data-target="#saveCategoriaModal" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a></h1>
+                    <div class="modal fade" id="saveCategoriaModal" tabindex="-1" role="dialog" aria-labelledby="myCategoriaLabel"
+                        aria-hidden="true">
+                       <div class="modal-dialog">
+                           <div class="modal-content">
+                               <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+                                   <div class="modal-header">
+                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                               ng-click="clear()">&times;</button>
+                                       <h4 class="modal-title" id="myCategoriaLabel">Crear o editar una Categoria: </h4>
+                                   </div>
+                                   <div class="modal-body">
+                                       <div class="form-group">
+                                           <div class="form-group">
+                                               <label for="codigo">Codigo</label> <input type="number" class="form-control" id="codigo" name="codigo" ng-model="categoria.codigo">
+                                           </div>
+                                       
+                                           <label>Descripcion</label>
+                                           <input type="text" class="form-control" name="descripcion" ng-model="categoria.descripcion">
+                                           <div ng-show="editForm.descripcion.$invalid"></div>
+                                       </div>
+
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                                           <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                                       </button>
+                                       <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                                           <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                                       </button>
+                                   </div>
+                               </form>
+                           </div>
+                       </div>
+                   </div>
+                    
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-md-2">Codigo</th>
+                                <th class="col-md-6">Descripcion</th>
+                                <th class="col-md-2">Habilitado</th>
+                                <th class="border-cell col-md-1">Modificar</th>
+                                <th class="col-md-1">Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="categoria in categorias">
+                                <td>{{categoria.codigo}}</td>
+                                <td>{{categoria.descripcion}}</td>
+                                <td ng-switch on="categoria.estado">
+                                    <span class="glyphicon glyphicon-remove" ng-switch-when="false"></span><span></span>
+                                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span><span></span>
+                                </td>
+                                <td class="border-cell"><a type="submit" ng-click="showUpdate(categoria.id)"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span></span></a></td>
+                                <td><a type="submit" ng-click="delete(categoria.id)"><span class="glyphicon glyphicon-trash"></span>&nbsp;<span></span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="modal fade" id="deleteCategoriaConfirmation">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form name="deleteForm" ng-submit="confirmDelete(categoria.id)">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                                ng-click="clear()">&times;</button>
+                                        <div ng-switch on="categoria.estado">
+                                            <h4 class="modal-title" ng-switch-when="true">Seguro que desea Deshabilitar:</h4>
+                                            <h4 class="modal-title" ng-switch-when="false">Seguro que desea Habilitar:</h4>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{categoria.descripcion}}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                                        </button>
+                                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-success" ng-if="categoria.estado == false">
+                                            <span class="glyphicon glyphicon-check" ></span>&nbsp;<span>Habilitar</span>
+                                        </button>
+                                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger" ng-if="categoria.estado == true">
+                                            <span class="glyphicon glyphicon-remove-circle" ></span>&nbsp;<span>Deshabilitar</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+                <div class="table-responsive" ng-controller="DificultadController">
+                    <h1>Dificultades <a href="http://www.fudit.org/ft-admin/index.php?c=slider&amp;a=add" data-toggle="modal" data-target="#saveDificultadModal" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a></h1>
+                    
+                    <div class="modal fade" id="saveDificultadModal" tabindex="-1" role="dialog" aria-labelledby="myDificultadLabel"
+                        aria-hidden="true">
+                       <div class="modal-dialog">
+                           <div class="modal-content">
+                                <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                                ng-click="clear()">&times;</button>
+                                        <h4 class="modal-title" id="myDificultadLabel">Crear o editar una Dificultad: </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Codigo</label>
+                                            <input type="text" class="form-control" name="codigo" ng-model="dificultad.codigo" required ng-minlength="1" ng-maxlength="4">
+                                            <div ng-show="editForm.codigo.$invalid">
+                                                <p class="help-block" ng-show="editForm.codigo.$error.required">Este campo es obligatorio</p>
+                                                <p class="help-block" ng-show="editForm.codigo.$error.minlength" translate-value-min="1">Debe tener al menos un caracter</p>
+                                                <p class="help-block" ng-show="editForm.codigo.$error.maxlength" translate-value-max="4"> No puede ser mas largo que 4 caracteres </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Descripcion</label>
+                                            <input type="text" class="form-control" name="descripcion" ng-model="dificultad.descripcion" required ng-minlength="1" ng-maxlength="30">
+                                            <div ng-show="editForm.descripcion.$invalid">
+                                                <p class="help-block" ng-show="editForm.descripcion.$error.required"> Este campo es obligatorio. </p>
+                                                <p class="help-block" ng-show="editForm.descripcion.$error.minlength" translate-value-min="1"> Debe tener al menos 1 caracter.</p>
+                                                <p class="help-block"ng-show="editForm.descripcion.$error.maxlength" translate-value-max="30"> No puede ser mas largo de 30 caracteres.</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                                        </button>
+                                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Guardar</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-md-2">Codigo</th>
+                                <th class="col-md-6">Descripcion</th>
+                                <th class="col-md-2">Habilitado</th>
+                                <th class="border-cell col-md-1">Modificar</th>
+                                <th class="col-md-1">Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="dificultad in dificultads">
+                                <td>{{dificultad.codigo}}</td>
+                                <td>{{dificultad.descripcion}}</td>
+                                <td ng-switch on="dificultad.estado">
+                                    <span class="glyphicon glyphicon-remove" ng-switch-when="false"></span><span></span>
+                                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span><span></span>
+                                </td>                                
+                                <td class="border-cell"><a type="submit" ng-click="showUpdate(dificultad.id)"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span></span></a></td>
+                                <td><a type="submit" ng-click="delete(dificultad.id)"><span class="glyphicon glyphicon-trash"></span>&nbsp;<span></span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="modal fade" id="deleteDificultadConfirmation">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form name="deleteForm" ng-submit="confirmDelete(dificultad.id)">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                                ng-click="clear()">&times;</button>
+                                        <div ng-switch on="dificultad.estado">
+                                            <h4 class="modal-title" ng-switch-when="true">Seguro que desea Deshabilitar:</h4>
+                                            <h4 class="modal-title" ng-switch-when="false">Seguro que desea Habilitar:</h4>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{dificultad.descripcion}}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                                        </button>
+                                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-success" ng-if="dificultad.estado == false">
+                                            <span class="glyphicon glyphicon-check" ></span>&nbsp;<span>Habilitar</span>
+                                        </button>
+                                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger" ng-if="dificultad.estado == true">
+                                            <span class="glyphicon glyphicon-remove-circle" ></span>&nbsp;<span>Deshabilitar</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive" ng-controller="PreguntaController">
+                    <h1>Preguntas <a href="http://www.fudit.org/ft-admin/index.php?c=slider&amp;a=add" class="pull-right" data-toggle="modal" data-target="#savePreguntaModal" ng-click="clear()"><span class="glyphicon glyphicon-plus"></span></a></h1>
+                                        
+                    <div class="modal fade" id="savePreguntaModal" tabindex="-1" role="dialog" aria-labelledby="myPreguntaLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form name="editForm" role="form" novalidate ng-submit="save(myCroppedImage, myImage.name)" show-validation>
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="clear()">&times;</button>
+                                        <h4 class="modal-title" id="myPreguntaLabel">Agregar una nueva pregunta</h4>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <label>Descripcion</label>
+                                                <input type="text" class="form-control" name="descripcion" ng-model="pregunta.descripcion" required ng-maxlength="140">
+                                                
+                                            <div ng-show="editForm.descripcion.$invalid">
+                                                <p class="help-block"
+                                                   ng-show="editForm.descripcion.$error.required" translate="entity.validation.required">
+                                                    This field is required.
+                                                </p>
+                                                <p class="help-block" ng-show="editForm.descripcion.$error.maxlength">
+                                                    El campo debe ser de 140 caracteres como minimo.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>Seleccione una imagen: <button ngf-select ng-model="myImage" accept="image/*">
+                                                  Imagen</button></div>
+                                            <div ngf-drop ng-model="myImage" ngf-pattern="image/*"
+                                                   class="cropArea" style="background: #E4E4E4;overflow: hidden;width:256px;height:256px;">
+                                                  <img-crop 
+                                                            image="myImage|ngfDataUrl" 
+                                                            result-image="myCroppedImage" 
+                                                            ng-init="croppedDataUrl=''" 
+                                                            area-type="square" 
+                                                            result-image-size="150"
+                                                            result-image-quality="0.7">
+                                                  </img-crop>
+                                            </div>
+                                            <div>Pre visualizacion:</div>
+                                            <div><img ng-src="{{myCroppedImage}}" /></div>
+                                            <span class="progress" ng-show="progress >= 0">
+                                              <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+                                            </span>
+                                            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                                        </div>    
+                                        <div>
+                                            <label >Opcion uno</label>
+                                            <input type="text" class="form-control" name="opcion1" ng-model="pregunta.opcion1" required ng-maxlength="140">
+                                            <div ng-show="editForm.opcion1.$invalid">
+                                                <p class="help-block"
+                                                   ng-show="editForm.opcion1.$error.required" translate="entity.validation.required">
+                                                    This field is required.
+                                                </p>
+                                                <p class="help-block"
+                                                   ng-show="editForm.opcion1.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="140">
+                                                    This field cannot be longer than 140 characters.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label>Opcion dos</label>
+                                            <input type="text" class="form-control" name="opcion2" ng-model="pregunta.opcion2" required ng-maxlength="140">
+                                            <div ng-show="editForm.opcion2.$invalid">
+                                                <p class="help-block"
+                                                   ng-show="editForm.opcion2.$error.required" translate="entity.validation.required">
+                                                    This field is required.
+                                                </p>
+                                                <p class="help-block"
+                                                   ng-show="editForm.opcion2.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="140">
+                                                    This field cannot be longer than 140 characters.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label>Opcion tres</label>
+                                            <input type="text" class="form-control" name="opcion3" ng-model="pregunta.opcion3" required ng-maxlength="140">
+                                            <div ng-show="editForm.opcion3.$invalid">
+                                                <p class="help-block"
+                                                   ng-show="editForm.opcion3.$error.required" translate="entity.validation.required">
+                                                    This field is required.
+                                                </p>
+                                                <p class="help-block"
+                                                   ng-show="editForm.opcion3.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="140">
+                                                    This field cannot be longer than 140 characters.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Correcta</label>
+                                            <input type="text" class="form-control" name="correcta" ng-model="pregunta.correcta" required ng-maxlength="140">
+                                            <div ng-show="editForm.correcta.$invalid">
+                                                <p class="help-block"
+                                                   ng-show="editForm.correcta.$error.required" translate="entity.validation.required">
+                                                    This field is required.
+                                                </p>
+                                                <p class="help-block"
+                                                   ng-show="editForm.correcta.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="140">
+                                                    This field cannot be longer than 140 characters.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <p>Selecciona la/s dificultades: </p>
+                                            <label ng-repeat="dificultad in dificultades" class="form-control">
+                                                <input type="checkbox" checklist-model="pregunta.dificultades" checklist-value="dificultad"> {{dificultad.descripcion}}
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <p>Selecciona el/los niveles: </p>
+                                            <label ng-repeat="nivel in nivels" class="form-control">
+                                                <input type="checkbox" checklist-model="pregunta.nivels" checklist-value="nivel"> {{nivel.descripcion}}
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <p>Selecciona la/las categorias: </p>
+                                            <label ng-repeat="categoria in categorias" class="form-control">
+                                                <input type="checkbox" checklist-model="pregunta.categorias" checklist-value="categoria"> {{categoria.descripcion}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                                        </button>
+                                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Guardar</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group col-md-3">
+                        <span class="input-group-addon glyphicon glyphicon-search" id="basic-addon1"></span>
+                        <input type="text" class="form-control col-md-2" ng-model="preguntaFilter" placeholder="Buscar...">
+                    </div>
+                   
+                    <br/>
+                    <br/>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-md-1">Creador</th>
+                                <th class="col-md-2">Pregunta</th>
+                                <th class="col-md-3">Respuesta</th>
+                                <th class="col-md-1"><a ng-click="ordenarPorNiveles()">Nivel/es</a></th>
+                                <th class="col-md-1"><a ng-click="ordenarPorDificultades()">Dificultad/es</a></th>
+                                <th class="col-md-1"><a ng-click="ordenarPorCategorias()">Categoria/s</a></th></th>
+                                <th class="col-md-1">Imagen</th>
+                                <th class="border-cell col-md-1">Modificar</th>
+                                <th class="col-md-1">Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="pregunta in preguntas | orderBy: orderByModel | filter: preguntaFilter">
+                                <td>{{pregunta.user.login}}
+                                <td>{{pregunta.descripcion}}</td>
+                                <td ng-show="pregunta.opcion1 == pregunta.correcta" ng-class="{opcionCorrecta: pregunta.opcion1 == pregunta.correcta, opcionComun: pregunta.opcion1 != pregunta.correcta}">{{pregunta.opcion1}}</td>
+                                <td ng-show="pregunta.opcion2 == pregunta.correcta" ng-class="{opcionCorrecta: pregunta.opcion2 == pregunta.correcta, opcionComun: pregunta.opcion2 != pregunta.correcta}">{{pregunta.opcion2}}</td>
+                                <td ng-show="pregunta.opcion3 == pregunta.correcta" ng-class="{opcionCorrecta: pregunta.opcion3 == pregunta.correcta, opcionComun: pregunta.opcion3 != pregunta.correcta}">{{pregunta.opcion3}}</td>
+                                <td>{{obtenerNiveles(pregunta)}}</td>
+                                <td>{{obtenerDificultades(pregunta)}}</td>
+                                <td>{{obtenerCategorias(pregunta)}}</td>
+                                <td>
+                                    <button ng-if="pregunta.imagen" type="submit" class="btn btn-default" ng-click="abrirImagen(pregunta.imagen.id)">
+                                        <span class="glyphicon glyphicon-picture"></span>
+                                    </button>
+                                </td>
+                                <td class="border-cell"><a type="submit" ng-click="showUpdate(pregunta.id)"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<span></span></a></td>
+                                <td><a type="submit" ng-click="delete(pregunta.id)"><span class="glyphicon glyphicon-trash"></span>&nbsp;<span></span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="modal fade" id="deletePreguntaConfirmation">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form name="deleteForm" ng-submit="confirmDelete(pregunta.id)">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                                ng-click="clear()">&times;</button>
+                                        <h4 class="modal-title">Desea borrar esta pregunta:</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{pregunta.descripcion}}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                                        </button>
+                                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Borrar</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="abrirImagenModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <img src="data:image/jpeg;base64,{{imagen}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+            <div class="col-md-8" ng-switch-when="false">
+                <h1 translate="main.title">Bienvenido!</h1>
+                <div class="alert alert-warning" translate="global.messages.info.authenticated">
+                    Debe ir a <a href="#/login">login</a>, para loguearse.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

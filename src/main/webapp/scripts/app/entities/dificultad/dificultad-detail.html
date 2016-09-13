@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="facultadhumanidadesApp.dificultad.detail.title">Dificultad</span> {{dificultad.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="facultadhumanidadesApp.dificultad.codigo">Codigo</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{dificultad.codigo}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="facultadhumanidadesApp.dificultad.estado">Estado</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{dificultad.estado}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="facultadhumanidadesApp.dificultad.descripcion">Descripcion</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{dificultad.descripcion}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="dificultad"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

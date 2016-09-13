@@ -1,0 +1,20 @@
+{
+    "facultadhumanidadesApp": {
+        "bitacoraPartida" : {
+            "home": {
+                "title": "BitacoraPartidas",
+                "createLabel": "Créer un nouveau BitacoraPartida",
+                "createOrEditLabel": "Créer ou éditer un BitacoraPartida"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le BitacoraPartida {{ id }} ?"
+            },
+            "detail": {
+                "title": "BitacoraPartida"
+            },
+            "pregunta": "pregunta",
+            "partida": "partida"
+        }
+    }
+}
+

@@ -1,0 +1,26 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "numero",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Numero",
+            "fieldNameUnderscored": "numero",
+            "fieldInJavaBeanMethod": "Numero",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20160716205349",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "validation": false
+}

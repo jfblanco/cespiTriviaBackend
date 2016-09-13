@@ -1,0 +1,25 @@
+{
+    "facultadhumanidadesApp": {
+        "pregunta" : {
+            "home": {
+                "title": "Preguntas",
+                "createLabel": "Create a new Pregunta",
+                "createOrEditLabel": "Create or edit a Pregunta"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Pregunta {{ id }}?"
+            },
+            "detail": {
+                "title": "Pregunta"
+            },
+            "descripcion": "Descripcion",
+            "opcion1": "Opcion1",
+            "opcion2": "Opcion2",
+            "opcion3": "Opcion3",
+            "opcion4": "Opcion4",
+            "correcta": "Correcta",
+            "nivel": "nivel",
+            "categoria": "categoria"
+        }
+    }
+}

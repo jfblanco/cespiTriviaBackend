@@ -1,0 +1,18 @@
+{
+    "facultadhumanidadesApp": {
+        "partida" : {
+            "home": {
+                "title": "Partidas",
+                "createLabel": "Create a new Partida",
+                "createOrEditLabel": "Create or edit a Partida"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Partida {{ id }}?"
+            },
+            "detail": {
+                "title": "Partida"
+            },
+            "fecha": "Fecha"
+        }
+    }
+}

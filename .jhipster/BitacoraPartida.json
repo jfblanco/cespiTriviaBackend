@@ -1,0 +1,39 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "pregunta",
+            "relationshipNameCapitalized": "Pregunta",
+            "relationshipFieldName": "pregunta",
+            "otherEntityName": "pregunta",
+            "relationshipType": "many-to-many",
+            "otherEntityNameCapitalized": "Pregunta",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "partida",
+            "relationshipNameCapitalized": "Partida",
+            "relationshipFieldName": "partida",
+            "otherEntityName": "partida",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "Partida",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "bitacoraPartida"
+        }
+    ],
+    "fields": [],
+    "fieldsContainOwnerManyToMany": true,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20160716210224",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "validation": false
+}

@@ -1,0 +1,21 @@
+{
+    "facultadhumanidadesApp": {
+        "dificultad" : {
+            "home": {
+                "title": "Dificultads",
+                "createLabel": "Créer un nouveau Dificultad",
+                "createOrEditLabel": "Créer ou éditer un Dificultad"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Dificultad {{ id }} ?"
+            },
+            "detail": {
+                "title": "Dificultad"
+            },
+            "codigo": "Codigo",
+            "estado": "Estado",
+            "descripcion": "Descripcion"
+        }
+    }
+}
+

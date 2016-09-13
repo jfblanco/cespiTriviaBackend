@@ -1,0 +1,19 @@
+{
+    "facultadhumanidadesApp": {
+        "partida" : {
+            "home": {
+                "title": "Partidas",
+                "createLabel": "Créer un nouveau Partida",
+                "createOrEditLabel": "Créer ou éditer un Partida"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Partida {{ id }} ?"
+            },
+            "detail": {
+                "title": "Partida"
+            },
+            "fecha": "Fecha"
+        }
+    }
+}
+

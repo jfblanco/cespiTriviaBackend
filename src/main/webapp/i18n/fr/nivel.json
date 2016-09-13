@@ -1,0 +1,19 @@
+{
+    "facultadhumanidadesApp": {
+        "nivel" : {
+            "home": {
+                "title": "Nivels",
+                "createLabel": "Créer un nouveau Nivel",
+                "createOrEditLabel": "Créer ou éditer un Nivel"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Nivel {{ id }} ?"
+            },
+            "detail": {
+                "title": "Nivel"
+            },
+            "numero": "Numero"
+        }
+    }
+}
+

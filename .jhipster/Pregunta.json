@@ -1,0 +1,122 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "nivel",
+            "relationshipNameCapitalized": "Nivel",
+            "relationshipFieldName": "nivel",
+            "otherEntityName": "nivel",
+            "relationshipType": "one-to-many",
+            "otherEntityNameCapitalized": "Nivel",
+            "otherEntityRelationshipName": "pregunta"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "categoria",
+            "relationshipNameCapitalized": "Categoria",
+            "relationshipFieldName": "categoria",
+            "otherEntityName": "categoria",
+            "relationshipType": "one-to-many",
+            "otherEntityNameCapitalized": "Categoria",
+            "otherEntityRelationshipName": "pregunta"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "descripcion",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Descripcion",
+            "fieldNameUnderscored": "descripcion",
+            "fieldInJavaBeanMethod": "Descripcion",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "140"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "opcion1",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Opcion1",
+            "fieldNameUnderscored": "opcion1",
+            "fieldInJavaBeanMethod": "Opcion1",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "140"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "opcion2",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Opcion2",
+            "fieldNameUnderscored": "opcion2",
+            "fieldInJavaBeanMethod": "Opcion2",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "140"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "opcion3",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Opcion3",
+            "fieldNameUnderscored": "opcion3",
+            "fieldInJavaBeanMethod": "Opcion3",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "140"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "opcion4",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Opcion4",
+            "fieldNameUnderscored": "opcion4",
+            "fieldInJavaBeanMethod": "Opcion4",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "140"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "correcta",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Correcta",
+            "fieldNameUnderscored": "correcta",
+            "fieldInJavaBeanMethod": "Correcta",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "140"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": true,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20160716205823",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "validation": true
+}

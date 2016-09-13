@@ -1,0 +1,206 @@
+<div>
+
+    <h2 translate="facultadhumanidadesApp.pregunta.home.title">Preguntas</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#savePreguntaModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="facultadhumanidadesApp.pregunta.home.createLabel">Create a new Pregunta</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="savePreguntaModal" tabindex="-1" role="dialog" aria-labelledby="myPreguntaLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myPreguntaLabel" translate="facultadhumanidadesApp.pregunta.home.createOrEditLabel">Create or edit a Pregunta</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="pregunta.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="facultadhumanidadesApp.pregunta.descripcion">Descripcion</label>
+                            <input type="text" class="form-control" name="descripcion"
+                                   ng-model="pregunta.descripcion" required ng-maxlength="140">
+
+                            <div ng-show="editForm.descripcion.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.descripcion.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.descripcion.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="140">
+                                    This field cannot be longer than 140 characters.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="facultadhumanidadesApp.pregunta.opcion1">Opcion1</label>
+                            <input type="text" class="form-control" name="opcion1"
+                                   ng-model="pregunta.opcion1" required ng-maxlength="140">
+
+                            <div ng-show="editForm.opcion1.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.opcion1.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.opcion1.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="140">
+                                    This field cannot be longer than 140 characters.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="facultadhumanidadesApp.pregunta.opcion2">Opcion2</label>
+                            <input type="text" class="form-control" name="opcion2"
+                                   ng-model="pregunta.opcion2" required ng-maxlength="140">
+
+                            <div ng-show="editForm.opcion2.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.opcion2.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.opcion2.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="140">
+                                    This field cannot be longer than 140 characters.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="facultadhumanidadesApp.pregunta.opcion3">Opcion3</label>
+                            <input type="text" class="form-control" name="opcion3"
+                                   ng-model="pregunta.opcion3" required ng-maxlength="140">
+
+                            <div ng-show="editForm.opcion3.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.opcion3.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.opcion3.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="140">
+                                    This field cannot be longer than 140 characters.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="facultadhumanidadesApp.pregunta.correcta">Correcta</label>
+                            <input type="text" class="form-control" name="correcta"
+                                   ng-model="pregunta.correcta" required ng-maxlength="140">
+
+                            <div ng-show="editForm.correcta.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.correcta.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.correcta.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="140">
+                                    This field cannot be longer than 140 characters.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Selecciona el/los niveles: </label>
+                            <label ng-repeat="nivel in nivels" class="form-control">
+                                <input type="checkbox" checklist-model="pregunta.nivels" checklist-value="nivel"> {{nivel.descripcion}}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>Selecciona la/las categorias: </label>
+                            <label ng-repeat="categoria in categorias" class="form-control">
+                                <input type="checkbox" checklist-model="pregunta.categorias" checklist-value="categoria"> {{categoria.descripcion}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deletePreguntaConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(pregunta.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="facultadhumanidadesApp.pregunta.delete.question" translate-values="{id: '{{pregunta.id}}'}">Are you sure you want to delete this Pregunta?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="facultadhumanidadesApp.pregunta.descripcion">Descripcion</th>
+                    <th translate="facultadhumanidadesApp.pregunta.opcion1">Opcion1</th>
+                    <th translate="facultadhumanidadesApp.pregunta.opcion2">Opcion2</th>
+                    <th translate="facultadhumanidadesApp.pregunta.opcion3">Opcion3</th>
+                    <th translate="facultadhumanidadesApp.pregunta.correcta">Correcta</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pregunta in preguntas">
+                    <td><a ui-sref="preguntaDetail({id:pregunta.id})">{{pregunta.id}}</a></td>
+                    <td>{{pregunta.descripcion}}</td>
+                    <td>{{pregunta.opcion1}}</td>
+                    <td>{{pregunta.opcion2}}</td>
+                    <td>{{pregunta.opcion3}}</td>
+                    <td>{{pregunta.correcta}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="preguntaDetail({id:pregunta.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="showUpdate(pregunta.id)"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(pregunta.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

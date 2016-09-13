@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="facultadhumanidadesApp.pregunta.detail.title">Pregunta</span> {{pregunta.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="facultadhumanidadesApp.pregunta.descripcion">Descripcion</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{pregunta.descripcion}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="facultadhumanidadesApp.pregunta.opcion1">Opcion1</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{pregunta.opcion1}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="facultadhumanidadesApp.pregunta.opcion2">Opcion2</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{pregunta.opcion2}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="facultadhumanidadesApp.pregunta.opcion3">Opcion3</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{pregunta.opcion3}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="facultadhumanidadesApp.pregunta.correcta">Correcta</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{pregunta.correcta}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="pregunta"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
